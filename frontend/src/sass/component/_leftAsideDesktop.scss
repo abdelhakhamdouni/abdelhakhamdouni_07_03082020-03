@@ -1,0 +1,46 @@
+.leftasideDesktop{
+    background-color: #03101d;
+    display: flex;
+    flex-direction: column;
+    height: calc( 100vh - 3em);
+    position: fixed;
+    left: 0;
+    width: 16em;
+    img{
+        width: 100px !important;
+        align-self: center;
+        margin-top: 2em;
+    }
+    h4{
+        color: $light;
+        align-self: center;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid $light;
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+    ul{
+        padding-top: 2em;;
+    }
+    ul li {
+        list-style: none;
+        margin-top: 1em;
+        transition: all .3s linear;
+        &:hover{
+            transform: translateX(10px);
+        }
+        a{
+            text-decoration: none;
+            color: $light;
+            font-size: 1.1em;
+            .fa{
+                margin-right: 1em;
+                font-size: 1.2em;
+            }
+            &:hover{
+                color: $orange;
+            }
+        }
+    }
+}

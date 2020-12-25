@@ -1,0 +1,31 @@
+.comment{
+    display: flex;
+    color: $light;
+    width: 100%;
+    background: #000;
+    border-radius: 8px;
+    padding: .5em;
+    margin-bottom: .5em;
+    div img{
+        width: 40px;
+        margin-right: 1em;
+    }
+    .comment-body{
+        width: 100%;
+        .comment-header{
+            color: $orange;
+        }
+        .comment-comment{
+            color: $white;
+            font-size: .8em;
+            padding: 1em;
+        }
+        .comment-footer{
+            width: 100%;
+        }
+    }
+    &.child{
+        width: 95% !important;
+        margin-left: 5%;
+    }
+}

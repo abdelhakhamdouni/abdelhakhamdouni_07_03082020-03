@@ -1,0 +1,86 @@
+.logscreen{
+    color: #666;
+    width: 65%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .logo{
+        text-align: center;
+        padding: 2em 0;
+        img{
+            width: 60%;
+        }
+    } 
+    .small{
+        padding: 0 2em 2em;
+        width: 50%;
+        text-align: center;
+        font-size: .9em;
+    }
+    form {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            label{
+                font-size: 1.2em;
+                padding: 1em 0 .2em;
+            }
+            input{
+                padding: .5em;
+                border:1px solid lightgray;
+                border-radius: 5px;
+                font-size: 1.2em;
+                width: 80%;
+            }
+            &.form-check{
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-top: 1em;
+                label{
+                    padding: 0;
+                    margin: 0;
+                }
+                input{
+                    width: unset;
+                }
+            }
+            
+        }
+        button{
+            background-color: $primary;
+            padding: .5em 1em;
+            color: white;
+            align-self: center;
+            margin-top: 2em;
+            font-size: 1.1em;
+        }
+    }
+    .helpers{
+        margin-top: 1.5em;
+        width: 100%;
+        button{
+            background-color: none;
+            color: $primary;
+            font-size: 1.1em;
+            margin-top: .5em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            cursor: pointer;
+          &:hover{
+              color: $orange;
+          }
+        }
+    }
+}
