@@ -75,7 +75,7 @@ module.exports = {
            req.body.post.description || null,
            "media",
            req.body.post.authorId,
-           "abdelhak"
+           req.body.post.pseudo
         ])
         .then((post)=>{
                 res.status(201)

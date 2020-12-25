@@ -5,7 +5,8 @@
     height: calc( 100vh - 3em);
     position: fixed;
     left: 0;
-    width: 16em;
+    width: 20em;
+    padding-top: 2em;
     img{
         width: 100px !important;
         align-self: center;
@@ -42,5 +43,21 @@
                 color: $orange;
             }
         }
+    }
+}
+@media screen and (max-width : 1200px){
+    .leftasideDesktop{
+        width: 12em;
+        ul li a{
+            font-size: .8em;
+        }
+    }
+}
+
+@media screen and (max-width : 990px){
+    .post{
+        width: 95%;
+        padding: 0;
+        height: 50vh;
     }
 }

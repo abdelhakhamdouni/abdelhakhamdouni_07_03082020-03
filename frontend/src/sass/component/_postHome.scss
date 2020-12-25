@@ -2,8 +2,8 @@
     color: $light;
     box-shadow: 0 0 5px #b8b8b8;
     margin-bottom: 1em;
-    width: 60%;
-    height: 50vh;
+    width: 50%;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -51,5 +51,19 @@
         padding: 1em;
         display: flex;
         justify-content: space-around;
+    }
+}
+
+@media screen and (max-width : 1200px){
+    .post{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width : 990px){
+    .post{
+        width: 95%;
+        padding: 0;
+        height: 50vh;
     }
 }

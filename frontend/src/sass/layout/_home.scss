@@ -1,8 +1,21 @@
 .home{
-    padding-left:  16em;
+    padding-left:  20em;
     padding-top: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+@media screen and (max-width : 1200px){
+    .home{
+        padding-left: 12em;
+    }
+}
+
+@media screen and (max-width : 990px){
+    .post{
+        width: 95%;
+        padding: 0;
+        height: 50vh;
+    }
 }

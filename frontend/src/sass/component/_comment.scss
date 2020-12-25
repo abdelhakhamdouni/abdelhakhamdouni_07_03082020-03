@@ -14,6 +14,12 @@
         width: 100%;
         .comment-header{
             color: $orange;
+            small{
+                margin-right: .5em;
+                &:last-of-type{
+                    color: rgb(109, 233, 241);
+                }
+            }
         }
         .comment-comment{
             color: $white;

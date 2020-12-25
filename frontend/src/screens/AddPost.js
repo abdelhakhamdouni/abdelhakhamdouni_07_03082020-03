@@ -57,7 +57,7 @@ function AddPost(props) {
     function submitPostForm(e) {
         e.preventDefault();
         data.authorId = props.state.user.id
-        data.pseudo = props.state.user.pseudo
+        data.pseudo = props.state.user.lastName
         addPost(data, imageFile, props.token).then(res => {
             if (res.status === 201) {
                 resetForm()
