@@ -1,7 +1,7 @@
 # _Groupomania_
 Un site web en guise de réseau social pour les salaries, afin d'ameliorer leur conditions de travail.
 Présentation du site: 
-    https://github.com/abdelhakhamdouni/abdelhakhamdouni_P7_03082020-2/blob/master/presentation%20du%20p7.gif
+    https://github.com/abdelhakhamdouni/abdelhakhamdouni_07_03082020-3/blob/master/presentation%20du%20p7.gif
     
 ## Installation
 
