@@ -24,7 +24,7 @@ function PostScreen(props) {
             .catch(err => {
                 history.push("/")
             })
-    }, [])
+    }, [id])
 
     function getComments(id){
         getAllCommentsByPostId(null, props.state.post.id).then(comments => {
@@ -38,6 +38,7 @@ function PostScreen(props) {
     return (
         !post ? null :
             <section className="postScreen">
+                <h1>{post.title}</h1>
                 <Post post={post}
                 />
                 <div className="comment-list">

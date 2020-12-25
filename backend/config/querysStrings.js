@@ -9,6 +9,7 @@ module.exports = {
     //strings for post querys
     createPost: "INSERT INTO posts(title, image, description, type, UserId, createdAt,userPseudo) VALUE(?,?,?,?,?,now(),?)",
     getPosts : "SELECT * FROM posts ORDER BY updatedAt DESC",
+    getLastsPostsByUserId : "SELECT * FROM posts ORDER BY createdAt DESC LIMIT 5",
     getAllPostsByUserId: "SELECT * FROM posts WHERE UserId = ?",
     getPostById : "SELECT * FROM posts WHERE iD = ?",
     updatePostLikes: "UPDATE posts SET likes = ?,updatedAt = now() WHERE id = ?",

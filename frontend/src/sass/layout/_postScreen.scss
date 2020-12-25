@@ -1,12 +1,18 @@
 .postScreen{
     padding-top: 2em;
-    padding-left: 16em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    width: 55%;
+    h1{
+        margin-bottom: 2em;
+        color: $light;
+        font-size: 2.5em;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px $orange, 4px 4px 5px $blue;
+    }
     .post {
-        width: 75%;
         border: 0;
         border-radius: 0;
         box-shadow: none;

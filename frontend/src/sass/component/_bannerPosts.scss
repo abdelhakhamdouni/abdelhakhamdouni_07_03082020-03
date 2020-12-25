@@ -1,0 +1,41 @@
+.bannerPosts{
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    border-left: 1px solid $light;
+    position: fixed;
+    right: 0;
+    top: 6em;
+    .posts{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: .5em 2em;
+        padding-right: 5em;
+        height: 100vh;
+        overflow: auto;
+    }
+    h2{
+        color: $light;
+        padding-left: 2em;
+    }
+    .post{
+        margin: .5em auto 1em;
+        height: 8em;
+        width: 16em;
+        .post_footer{
+            display: none;
+        }
+        .post_image{
+            img{
+                height: 100%;
+            }
+        }
+        .post_description{
+            display: none;
+        }
+        .post_header{
+            display: none;
+        }
+    }
+}

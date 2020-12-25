@@ -29,6 +29,16 @@ function getAllPosts(token = null) {
   )
 }
 
+function getLastsPosts(token = null) {
+  token = !token ? localStorage.getItem('token') : token
+  return axios.get(config.url + "posts/lasts",
+    {
+      headers: { 'Authorization': 'Bearer ' + token }
+    }
+
+  )
+}
+
 function getAllPostsWithId(token = null, id) {
   token = !token ? localStorage.getItem('token') : token
   return axios.get(config.url + "posts/" + id,
@@ -85,4 +95,4 @@ function likeAPost(token = null, id, like, data) {
 }
 
 
-export { addPost, getAllPosts, getAllPostsWithId, getPostById, deletePost, likeAPost, getAllLikesById }
+export { addPost, getAllPosts, getAllPostsWithId, getPostById, deletePost, likeAPost, getAllLikesById, getLastsPosts}

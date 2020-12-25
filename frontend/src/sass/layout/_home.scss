@@ -1,10 +1,10 @@
 .home{
-    padding-left:  20em;
     padding-top: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 60%;
 }
 @media screen and (max-width : 1200px){
     .home{

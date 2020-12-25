@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
-import Post from "../components/Post";
-import { getAllPosts } from "../models/postHandler";
+import Post from "./Post";
+import { getLastsPosts } from "../models/postHandler";
 import { connect } from "react-redux";
-import BannerPosts from "../components/BannerPosts";
 
-function HomeScreen(props) {
+function BannerPosts(props) {
   const [posts, setposts] = useState(props.posts);
 
   useEffect(() => {
-    getAllPosts().then((posts) => {
+    getLastsPosts().then((posts) => {
       props.setPostsData(posts.data);
     });
   }, [props.state.screen]);
 
   return (
-    <section className="home">
-      {!props.state.posts
-        ? null
-        : props.state.posts.map((post, i) => {
-            return <Post key={post.id} post={post} />;
-          })}
+    <section className="bannerPosts">
+      <h2>Les derniers articles </h2>
+      <section className="posts">
+        {!props.state.posts
+          ? null
+          : props.state.posts.map((post, i) => {
+              return <Post key={post.id} post={post} />;
+            })}
+      </section>
     </section>
   );
 }
@@ -37,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(BannerPosts);

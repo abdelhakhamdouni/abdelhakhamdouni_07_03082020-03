@@ -46,6 +46,24 @@ module.exports = {
             res.json({err})
         })
     },
+    
+    //get lasts 10 posts
+    getLastsPosts: async (req, res, next)=>{
+        const conn = await db
+        query(conn, querysStrings.getLastsPostsByUserId)
+        .then(posts=>{
+            posts.forEach((post) => {
+                posts[posts.indexOf(post)] = {...post, 'image' :req.protocol + '://' + req.get('host') + post.image}
+            });
+            res.status(200)
+            res.json(posts)
+        })
+        .catch(err=>{ 
+            console.log(err)
+            res.status(500)
+            res.json({err})
+        })
+    },
 
     //get one post by id
     getPostById : async (req, res, next )=>{

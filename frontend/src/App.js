@@ -16,6 +16,7 @@ import BottomNav from './components/BottomNav';
 import Loader from './components/Loader';
 import './sass/app.scss';
 import LeftAsideDesktop from './components/LeftAsideDesktop';
+import BannerPosts from './components/BannerPosts';
 
 function App(props) {
 
@@ -56,9 +57,8 @@ function App(props) {
     <div className="app">
       <Router history={history}>
         <Topbar/>
-          <LeftAside showAside={props.state.showSideBarre} showAsidehandler={showAsideHandler} />
+        <LeftAsideDesktop />
         <main className="main">
-          <LeftAsideDesktop />
           <Switch >
             <Route exact path="/"><HomeScreen /></Route>
             <Route path="/post/:id"><PostScreen aside={showAside} showAside={showAsideHandler} /></Route>
@@ -68,7 +68,7 @@ function App(props) {
             <Route path="/not-found" />
           </Switch>
         </main>
-        <BottomNav/>
+        <BannerPosts />
       </Router>
     </div>
   );

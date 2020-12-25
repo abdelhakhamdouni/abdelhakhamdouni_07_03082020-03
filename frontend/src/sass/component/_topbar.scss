@@ -1,5 +1,4 @@
 .topbar{
-    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -12,9 +11,9 @@
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     background-color: #03101d;
     .flex-row{
-        height: 100%;
         margin: auto;
         width: 100%;
         display: flex;
