@@ -108,7 +108,8 @@ const mapDispatchToProps = dispatch => {
             type: "SET_USERS_LIST",
             payload: {users}
         })
-    }
+      },
+
 
   }
 }

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Post from "../components/Post";
 import { getAllPosts } from "../models/postHandler";
 import { connect } from "react-redux";
-import BannerPosts from "../components/BannerPosts";
-import UsersList from "../components/UsersList";
 
 function HomeScreen(props) {
   const [posts, setposts] = useState(props.posts);

@@ -5,20 +5,21 @@ import { connect } from "react-redux";
 
 function BannerPosts(props) {
   const [posts, setposts] = useState(props.posts);
-
+  
   useEffect(() => {
     getLastsPosts().then((posts) => {
-      props.setPostsData(posts.data);
+      props.setLastsPostsData(posts.data);
     });
   }, [props.state.screen]);
+
 
   return (
     <section className="bannerPosts">
       <h2>Les derniers articles </h2>
       <section className="posts">
-        {!props.state.posts
+        {!props.state.lastposts
           ? null
-          : props.state.posts.map((post, i) => {
+          : props.state.lastposts.map((post, i) => {
               return <Post key={post.id} post={post} />;
             })}
       </section>
@@ -29,9 +30,9 @@ function BannerPosts(props) {
 const mapStateToProps = (state) => ({ state: state });
 const mapDispatchToProps = (dispatch) => {
   return {
-    setPostsData: (posts) =>
+    setLastsPostsData: (posts) =>
       dispatch({
-        type: "UPLOAD_POSTS_FROM_API",
+        type: "UPLOAD_LASTS_POSTS_FROM_API",
         payload: {
           posts: posts,
         },

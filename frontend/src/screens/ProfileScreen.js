@@ -29,6 +29,7 @@ function ProfileScreen(props) {
     return (
         <section className="profile">
             <div className="profile-header">
+                <img src={props.state.user.avatar} alt="avatar" />
                 <span>Email: <strong>{props.state.user.email}</strong></span>
                 <span>Nom prénom: <strong>{props.state.user.firstName}, {props.state.user.lastName}</strong></span>
                 <span>Roles: <strong>{props.state.user.roles}</strong></span>

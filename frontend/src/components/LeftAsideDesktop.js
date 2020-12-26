@@ -12,7 +12,7 @@ function LeftAside(props) {
 
     return (
             <nav className="leftasideDesktop" >
-                <img src={logo} alt="logo" />
+                <img src={props.state.user.avatar} alt="logo" />
                 <h4>{props.state.user.firstName} {props.state.user.lastName}</h4>
                 <ul>
                     <li>

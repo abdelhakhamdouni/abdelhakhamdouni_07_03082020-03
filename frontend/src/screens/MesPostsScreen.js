@@ -11,6 +11,7 @@ function MesPostsScreen(props) {
     useEffect(() => {
         getAllPostsWithId(null, props.state.user.id).then(posts=>{
             props.setPostsData(posts.data)
+            console.log("MES POSTS:",posts.data)
         }).catch(err=> console.log(err))
     }, [])
 

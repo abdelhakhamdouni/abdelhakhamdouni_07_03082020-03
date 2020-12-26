@@ -35,7 +35,7 @@ function ProfileScreen(props) {
         !user ? null :
         <section className="profile">
             <div className="profile-header">
-                <img src={user.avatar}  />
+                <img src={user.avatar} alt="avatar" />
                 <span>Email: <strong>{user.email}</strong></span>
                 <span>Nom prénom: <strong>{user.firstName}, {user.lastName}</strong></span>
                 <span>Roles: <strong>{user.roles}</strong></span>

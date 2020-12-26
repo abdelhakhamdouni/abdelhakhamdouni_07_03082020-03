@@ -9,10 +9,10 @@ module.exports = {
     
     //strings for post querys
     createPost: "INSERT INTO posts(title, image, description, type, UserId, createdAt,userPseudo) VALUE(?,?,?,?,?,now(),?)",
-    getPosts : "SELECT * FROM posts ORDER BY updatedAt DESC",
+    getPosts : `SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes, users.avatar FROM posts,users WHERE posts.UserId = users.id ORDER BY updatedAt DESC`,
     getLastsPostsByUserId : "SELECT * FROM posts ORDER BY createdAt DESC LIMIT 5",
-    getAllPostsByUserId: "SELECT * FROM posts WHERE UserId = ?",
-    getPostById : "SELECT * FROM posts WHERE iD = ?",
+    getAllPostsByUserId: "SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes, users.avatar FROM posts, users WHERE posts.UserId = users.id AND posts.UserId = ?",
+    getPostById : "SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes, users.avatar FROM posts, users WHERE posts.UserId = users.id AND posts.id = ?",
     updatePostLikes: "UPDATE posts SET likes = ?,updatedAt = now() WHERE id = ?",
     updatePostComments : "UPDATE posts SET comments = ?,updatedAt = now() WHERE id = ?",
     deletePostById: "DELETE FROM posts WHERE id = ?",

@@ -22,7 +22,7 @@ function Post(props) {
             userId: props.user.id,
         }
         let tolike = liked ? 0 : 1 
-        likeAPost(null, post.id, tolike, data).then((res)=>{
+        likeAPost(null, parseInt(post.id), parseInt(tolike), data).then((res)=>{
             if(res.data.res === 'add'){
                 setliked(true)
                 setlikes( post.likes++)
@@ -65,7 +65,7 @@ function Post(props) {
                     <div className="post-close" onClick={props.close}>Fermer <span className="fa fa-close fa-2x"></span></div>
             }
             <div className="post_header">
-                <h2 className="post_footer-author"><img src={logo} alt="avatar" width="30" />{post.userPseudo}</h2>
+                <h2 className="post_footer-author"><img src={post.avatar} alt="avatar" width="30" />{post.userPseudo}</h2>
                 {/* <h3>{props.post.title}</h3> */}
                 {
                     author !== -1 && <span className="fa fa-edit" onClick={() => setshowSetting(!showSetting)}></span>

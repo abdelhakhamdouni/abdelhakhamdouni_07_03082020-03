@@ -10,7 +10,8 @@ let initialState = {
     comments: null,
     showCommentForm: false,
     loading: true,
-    users: []
+    users: [],
+    lastposts:[]
 }
 
 const reducers =  (state = initialState, action) => {
@@ -19,6 +20,8 @@ const reducers =  (state = initialState, action) => {
             return {...state, user: action.payload.user, showLogin: false, logged: true }
       case 'UPLOAD_POSTS_FROM_API':
         return {...state, posts: action.payload.posts}
+      case 'UPLOAD_LASTS_POSTS_FROM_API':
+        return {...state, lastposts: action.payload.posts}
       case 'UPLOAD_POST_FROM_API':
         return {...state, post: action.payload.post}
       case 'UPLOAD_COMMENTS_FROM_API':

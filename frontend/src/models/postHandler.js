@@ -14,7 +14,6 @@ function addPost(data, file) {
     {
       method: 'post',
       headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-
     }
   )
 }

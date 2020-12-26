@@ -8,7 +8,7 @@ module.exports = {
 
     getUserById: async (req, res)=>{
         const conn = await db;
-        query(conn, querysStrings.findUserById, [[req.params.id]])
+        query(conn, querysStrings.findUserById, [req.params.id])
         .then(user=>{
             user[0].avatar = req.protocol + '://' + req.get('host') + user[0].avatar
             res.status(200)

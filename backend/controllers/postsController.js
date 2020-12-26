@@ -2,15 +2,11 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 const unlinkAsync = promisify(fs.unlink)
-const { Op } = require('sequelize')
-
-const Post = require('../models/postModel')
 const db = require('../config/db')
 const query = require('../config/query')
 const querysStrings = require('../config/querysStrings')
 
 module.exports = {
-
     //get all posts
     getAllPosts : async (req, res, next )=>{
         const conn = await db
@@ -18,6 +14,7 @@ module.exports = {
         .then(posts=>{
                 posts.forEach((post) => {
                     post.image = req.protocol + '://' + req.get('host') + post.image
+                    post.avatar = req.protocol + '://' + req.get('host') + post.avatar
                 });
                 res.status(200)
                 res.json(posts)
@@ -35,7 +32,11 @@ module.exports = {
         query(conn, querysStrings.getAllPostsByUserId, [req.params.id])
         .then(posts=>{
             posts.forEach((post) => {
-                posts[posts.indexOf(post)] = {...post, 'image' :req.protocol + '://' + req.get('host') + post.image}
+                posts[posts.indexOf(post)] = {
+                    ...post, 
+                    'image' :req.protocol + '://' + req.get('host') + post.image,
+                    'avatar' :  req.protocol + '://' + req.get('host') + post.avatar
+                }
             });
             res.status(200)
             res.json(posts)
@@ -71,6 +72,7 @@ module.exports = {
         query(conn, querysStrings.getPostById,[req.params.id])
         .then(post=>{
             post[0].image = req.protocol + '://' + req.get('host') + post[0].image
+            post[0].avatar = req.protocol + '://' + req.get('host') + post[0].avatar
             res.status(200)
             res.json(post[0])
         })
@@ -84,7 +86,6 @@ module.exports = {
     //add poste to server and bdd
     addPost : async (req, res, next)=>{
         req.body.post = JSON.parse(req.body.post)
-        console.log("body after multer:", req.body)
         let fileName = `/images/${req.file.filename}`
         const conn = await db
         query(conn, querysStrings.createPost,[
@@ -148,9 +149,14 @@ module.exports = {
 
     //liker un poste
     likePost: async (req, res, next)=>{
-        let post_id = req.params.id
+        let post_id = parseInt(req.params.id)
         let liked = req.params.like
-        let user_id = req.body.userId
+        let user_id = parseInt(req.body.userId)
+        console.log("IN post Controller --------------------", {
+            post_id,
+             liked ,
+             user_id,
+        })
         let conn = await db;
         switch(liked){
             case "1":
@@ -183,6 +189,7 @@ module.exports = {
                     })
                 })
                 .catch(err=>{
+                    console.log(err)
                     res.status(500)
                     res.json({err})
                 })

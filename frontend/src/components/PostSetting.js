@@ -15,7 +15,6 @@ function PostSetting(props) {
                     props.setPostsData(posts.data)
                     history.push('/')
                 })
-                
             })
         }
     }
