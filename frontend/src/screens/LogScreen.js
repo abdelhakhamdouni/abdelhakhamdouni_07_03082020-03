@@ -22,16 +22,15 @@ function LogScreen(props) {
         props.toggleLoading(true)
         logUser(credentiels)
         .then(data =>{
-            console.log(data)
             if(data.data.err){
                 seterror('Votre email ou mot de passe est incorrect !')
             }else{
+                seterror(null)
                 localStorage.setItem('token', data.data.token)
                 props.setUserData(data.data.user)
                 props.setLoggin(true)
                 props.toggleLoading(false)
             }
-
         })
         .catch(err=> console.log(err))
     }
@@ -49,10 +48,11 @@ function LogScreen(props) {
                 <img className="img-fluid" src={logo} alt="groupomania" />
             </div>
             <p className="small">Connetez-vous pour pouvoir poster des medias, liker et commenter les postes de vos colègues.</p>
+            {!error ? null:
+                <div className="warning">{error}</div>
+            }
+
             <form onSubmit={login}>
-                {!error ? null : <div className="alert alert-warning">
-                    {error}
-                </div>}
                 <div className="form-group">
                     <label htmlFor="email">Email :</label>
                     <input onChange={changeCredentiels} name="email" type="email" className="form-control" id="email" aria-describedby="emailHelp"/>

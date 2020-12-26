@@ -115,21 +115,35 @@ module.exports = {
     deletePost: async (req, res, next)=>{
         let id = req.params.id
         const conn = await db
-        try{
-            let deletecomments = await query(conn, querysStrings.deleteCommentsByPostId,[id])
-            let deletelikes = await query(conn, querysStrings.deleteLikesByPostId,[id])
-            let post = await query(conn, querysStrings.getPostById,[id])
-            unlinkAsync(path.join('../backend/', post[0].image)) //suprimer l'image puis poste du serveur 
-            query(conn, querysStrings.deletePostById,[id]).then(()=>{
-                res.status(200)
-                res.json({message: "post supprimé !"})
-            })
-        }
-        catch(err){
-            console.log(err)
+        query(conn, querysStrings.deleteCommentsByPostId,[id])
+        .catch(err =>{
+            console.log("120",err)
             res.status(500)
-            res.json({err: "impossible de recuperer ce poste"})
-        }
+            res.json({err: "impossible de recuperer ce poste " + err})
+        })
+        query(conn, querysStrings.getAllLikesByPostId,[id])
+        .catch(err =>{
+            console.log("126",err)
+            res.status(500)
+            res.json({err: "impossible de recuperer ce poste " + err})
+        })
+        query(conn, querysStrings.getPostById,[id]).then((post)=>{
+            unlinkAsync(path.join('../backend/', post[0].image)) //suprimer l'image puis poste du serveur 
+        })
+        .catch(err =>{
+            console.log("132",err)
+            res.status(500)
+            res.json({err: "impossible de recuperer ce poste " + err})
+        })
+        query(conn, querysStrings.deletePostById,[id]).then(()=>{
+            res.status(200)
+            res.json({message: "post supprimé !"})
+        })
+        .catch(err =>{
+            console.log("142",err)
+            res.status(500)
+            res.json({err: "impossible de recuperer ce poste " + err})
+        })
     },
 
     //liker un poste

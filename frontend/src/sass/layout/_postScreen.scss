@@ -1,12 +1,12 @@
 .postScreen{
-    padding-top: 2em;
+    padding-top: 3em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 55%;
+    padding-bottom: 8em;
     h1{
-        margin-bottom: 2em;
         color: $light;
         font-size: 2.5em;
         text-transform: uppercase;

@@ -8,8 +8,9 @@ module.exports = {
 
     getUserById: async (req, res)=>{
         const conn = await db;
-        query(conn, querysStrings.findUserById, [req.params.id])
+        query(conn, querysStrings.findUserById, [[req.params.id]])
         .then(user=>{
+            user[0].avatar = req.protocol + '://' + req.get('host') + user[0].avatar
             res.status(200)
             res.json(user[0])
         })
@@ -24,12 +25,13 @@ module.exports = {
         let email = user.email
         let password = user.password
         let roles = 'ROLE_USER'
-        let avatar = req.file.filename !== undefined ? `/images/${req.file.filename}` : null
+        let avatar = req.file.filename !== undefined ? `/images/avatars/${req.file.filename}` : null
         console.log("filename: ", req.file.filename)
         query(conn, querysStrings.createUser,[
             firstName, lastName, email, password, roles, avatar
         ]).then(user=>{
             if(user){
+                user[0].avatar = req.protocol + '://' + req.get('host') + user[0].avatar
                 res.status(201)
                 res.json({message : "user created with success !"})
             }
@@ -62,7 +64,7 @@ module.exports = {
                         req.body.roles = user[0].roles
                         req.body.firstName = user[0].firstName
                         req.body.lastName = user[0].lastName
-                        req.body.avatar = user[0].avatar
+                        req.body.avatar = req.protocol + '://' + req.get('host') + user[0].avatar
                         next()
                     }
                 })
@@ -84,7 +86,7 @@ module.exports = {
                 req.body.roles = user[0].roles
                 req.body.firstName = user[0].firstName
                 req.body.lastName = user[0].lastName
-                req.body.avatar = user[0].avatar
+                req.body.avatar = req.protocol + '://' + req.get('host') + user[0].avatar
                 next()
             }).catch(e => {
                 res.status(400)
@@ -92,29 +94,39 @@ module.exports = {
             }) 
     },
 
-    delete:  (req, res, next)=>{
+    delete: async (req, res, next)=>{
         let id = req.params.id
-        query(db, querysStrings.deleteUser,[id])
-        .then((user)=>{
-            user.destroy()
-            res.status(200)
-            res.json({message: "Utilisateur Supprimé avec succés"});
-        })
-        Post.findAll({where:{UserId: id}})
+        const conn = await db
+        query(conn, querysStrings.getAllPostsByUserId,[id])
         .then(posts=>{
-            posts.forEach(post=>
-                post.destroy())
-        })
-        Comment.findAll({where:{UserId: id}})
+           posts.forEach(post=>{
+               query(query.deletePostById,[post.id]).catch(err=> console.log(err))
+           })
+        }).catch(err=> console.log("103", err))
+        query(conn, querysStrings.getAllCommentsByUserId,[id])
         .then(comments=>{
-            comments.forEach(comment=>
-                post.destroy())
+           comments.forEach(comment=>{
+               query(query.deleteCommentsById,[comment.id]).catch(err=> console.log(err))
+           })
+        }).catch(err=> console.log("109", err))
+        query(conn, querysStrings.getAllLikesByUserId,[id])
+        .then(likes=>{
+           likes.forEach(like=>{
+               query(query.deleteLikeByUserId,[like.id]).catch(err=> console.log(err))
+           })
+        
+        }).catch(err=> console.log("126", err))
+        query(conn, querysStrings.deleteUser,[id])
+        .then((user)=>{
+            query(query.deleteUserById,[id]).then(()=>{
+                res.status(200)
+                res.json({message: "Utilisateur Supprimé avec succés"});
+            }).catch(err=> console.log(err))
         })
-        .catch(err=>{
-            res.status(500)
-            res.json({err})
-        })
+        .catch(err=> console.log("123", err))
     },
+
+
     checkPseudo: (req, res)=>{
         let pseudo = req.body.pseudo
         db.query(querysStrings.findUserByPseudo, [pseudo])
@@ -126,6 +138,19 @@ module.exports = {
                 res.status(200)
                 res.json({success:"valide"})
             }
+        })
+    },
+
+    getAllUsers: async (req, res)=>{
+        let conn = await db;
+        query(conn,querysStrings.findAllUsers)
+        .then(users=>{
+            users.forEach((user) => {
+                user.avatar = req.protocol + '://' + req.get('host') + user.avatar
+            });
+                res.status(200)
+                res.json({users})
+           
         })
     }
 }

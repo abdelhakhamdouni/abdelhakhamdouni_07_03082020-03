@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import logo from "../assets/images/avatar/avatar.png";
 import { Link, useHistory } from "react-router-dom";
 
 function Topbar(props) {
@@ -29,10 +28,11 @@ function Topbar(props) {
       <div className="flex-row">
         <h1><Link to="/">GROUPOMANIA</Link></h1>
       </div>
+
       <div className="menu-bar">
         <Link to="/profile" className="button image">
           <span>{props.state.user.lastName} </span>
-          <img src={logo} alt="groupomania" />
+          <img src={props.state.user.avatar} alt="groupomania" />
         </Link>
           <Link className="button" to="/ajouter">
             <span className="fa fa-plus"></span>Ajouter un poste

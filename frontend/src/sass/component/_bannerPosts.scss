@@ -4,7 +4,9 @@
     border-left: 1px solid $light;
     position: fixed;
     right: 0;
-    top: 6em;
+    top: 5em;
+    background-color: $dark;
+    z-index: 999;
     .posts{
         display: flex;
         flex-direction: column;

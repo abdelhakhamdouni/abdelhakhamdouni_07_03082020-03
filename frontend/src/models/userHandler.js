@@ -64,4 +64,15 @@ function getUserById(id){
     }
   )
 }
-export {logWithToken, deleteUser, logUser, addUser, checkUserPseudo, getUserById}
+
+function getAllUsers(){
+  let token = localStorage.getItem('token')
+  return axios.get(
+    config.url + "auth/users",
+    {
+      timeout: 1000,
+      headers: { 'Authorization': 'Bearer ' + token }
+    }
+  )
+}
+export {logWithToken, deleteUser, logUser, addUser, checkUserPseudo, getUserById, getAllUsers}

@@ -40,7 +40,9 @@ function Comment(props) {
     return (
         !user ? null :
         <article className={props.comment.id !== props.comment.CommentId ? "comment child" : "comment" }>
-            <div><img onClick={()=>history.push('/profile')} src={avatar} alt="avatar"/></div>
+            <div className="comment_image">
+                <img onClick={()=>history.push('/profile')} src={user.avatar} alt="avatar"/>
+            </div>
             <div className="comment-body">
                 <div className="comment-header d-flex flex-column justify-content-start align-items-start">
                     <small className="font-weight-bold">{user.firstName +"-"+user.lastName}</small>

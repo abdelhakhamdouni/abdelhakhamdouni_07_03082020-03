@@ -9,12 +9,10 @@ const multer = require('../utils/multerAvatar')
 
 
 router.get('/',tokenController.verify, userController.singinWithToken, tokenController.send )
+router.get('/users',tokenController.verify, userController.getAllUsers )
 router.get('/:id',tokenController.verify, userController.getUserById )
-
 router.post('/login',userController.signin, tokenController.send )
-
 router.post('/signup',multer, validateController.email, validateController.password, hashPassword, userController.signup )
-
 router.delete('/:id',[
     body('email').isEmail().normalizeEmail(),
     body('password').trim().escape(),

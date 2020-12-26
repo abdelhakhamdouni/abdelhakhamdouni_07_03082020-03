@@ -2,6 +2,7 @@ module.exports = {
     //strings for user handler querys
     createUser: "INSERT INTO users (firstName, lastName, email, password,roles, avatar,createdAt) VALUE(?,?,?,?,?,?,now())",
     findUser: "SELECT * FROM users WHERE email = ?",
+    findAllUsers: "SELECT * FROM users",
     findUserByPseudo : "SELET * FROM users WHERE pseudo = ?",
     findUserById: "SELECT * FROM users WHERE id = ?",
     deleteUser: "DELETE FROM users WHERE id = ?",
@@ -30,7 +31,9 @@ module.exports = {
     //strigns for likes querys
     createLike: "INSERT INTO likes(createdAt,updatedAt, UserId, PostId) VALUE(now(),now(),?,?)",
     deleteLike: "DELETE FROM likes WHERE UserId = ? AND PostId = ?",
+    deleteLikeById: "DELETE FROM likes WHERE UserId = ? AND PostId = ?",
     getLikesByPostId : "SELECT * FROM likes WHERE PostId = ?",
-    deleteLikesByPostId: "DELETE FROM likes WHERE PostId = ?",
-
+    getAllLikesByPostId: "SELECT * FROM likes WHERE PostId = ?",
+    getAllLikesByUserId: "SELECT * FROM likes WHERE UserId = ?",
+    deleteLikeByUserId: "DELETE FROM likes WHERE UserId = ?",
 }

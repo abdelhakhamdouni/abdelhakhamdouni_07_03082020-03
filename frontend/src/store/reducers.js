@@ -10,6 +10,7 @@ let initialState = {
     comments: null,
     showCommentForm: false,
     loading: true,
+    users: []
 }
 
 const reducers =  (state = initialState, action) => {
@@ -34,6 +35,8 @@ const reducers =  (state = initialState, action) => {
         return {...state, showRegister: action.payload.showRegister}
       case 'TOGGLE_LOADING':
         return {...state, loading: action.payload.loading}
+      case 'SET_USERS_LIST':
+        return {...state, users: action.payload.users}
       default:
         return state
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LogScreen from './screens/LogScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -17,6 +17,8 @@ import Loader from './components/Loader';
 import './sass/app.scss';
 import LeftAsideDesktop from './components/LeftAsideDesktop';
 import BannerPosts from './components/BannerPosts';
+import UsersList from './components/UsersList';
+import UserProfileScreen from './screens/UserProfileScreen';
 
 function App(props) {
 
@@ -55,8 +57,10 @@ function App(props) {
     !props.state.showRegister ? <LogScreen /> : <RegisterScreen /> 
     :
     <div className="app">
+
       <Router history={history}>
         <Topbar/>
+        <UsersList />
         <LeftAsideDesktop />
         <main className="main">
           <Switch >
@@ -64,6 +68,7 @@ function App(props) {
             <Route path="/post/:id"><PostScreen aside={showAside} showAside={showAsideHandler} /></Route>
             <Route path="/ajouter"><AddPost showAside={showAsideHandler} aside={showAside} /></Route>
             <Route path="/profile"><ProfileScreen aside={showAside} showAside={showAsideHandler} /></Route>
+            <Route path="/users/profile/:id"><UserProfileScreen /></Route>
             <Route path="/mesposts"><MesPostsScreen aside={showAside} showAside={showAsideHandler} /></Route>
             <Route path="/not-found" />
           </Switch>
@@ -97,7 +102,13 @@ const mapDispatchToProps = dispatch => {
         payload: {
           loading: bool
         }
-      })
+      }),
+      setUsers : users =>{
+        dispatch({
+            type: "SET_USERS_LIST",
+            payload: {users}
+        })
+    }
 
   }
 }

@@ -35,7 +35,11 @@
             }
         }
         img{
-            width: 40px;
+            width: 35px;
+            height: 35px;
+            margin-right: 1em;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgb(223, 223, 223);
         }
     }
     .menu-bar{
@@ -79,8 +83,11 @@
                 background-color: transparent;
             }
             img{
-                margin:0 1em 0 .5em;
-                width: 35px;
+                width: 30px;
+                height: 30px;
+                margin: 0 1em 0 .5em;
+                border-radius: 50%;
+                box-shadow: 0 0 5px rgb(223, 223, 223);
             }
         }
     }
