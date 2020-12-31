@@ -27,9 +27,10 @@
         }
     }
     .profile-action{
-        button{
+        button, .button{
             padding: .5em 1em;
             font-size: 1.1em;
+            text-decoration: none;
         }
     }
 }

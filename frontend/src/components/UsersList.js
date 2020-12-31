@@ -1,16 +1,9 @@
-import React, { useEffect } from "react";
-import { getAllUsers } from "../models/userHandler";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 function UsersList(props) {
-  useEffect(() => {
-   getAllUsers().then((users) => {
-      props.setUsers(users.data.users);
-    });
-  }, []);
 
-  
 
   return (
     <section className="bannerUsers">
@@ -20,11 +13,14 @@ function UsersList(props) {
           : props.users.map((user, i) => {
               return (
                 <li key={i}>
-                    <Link to={"/users/profile/"+ i} className={props.state.user.id === user.id ? "author" : ""}>
-                        <img src={user.avatar}  alt="user avatar"/>
-                    </Link>
+                  <Link
+                    to={"/users/profile/" + user.id}
+                    className={props.state.user.id === user.id ? "author" : ""}
+                  >
+                    <img src={user.avatar} alt="user avatar" />
+                  </Link>
                 </li>
-              )
+              );
             })}
       </ul>
     </section>
@@ -32,15 +28,15 @@ function UsersList(props) {
 }
 
 const mapStateToProps = (state) => ({ users: state.users, state: state });
-const matDispatchToProps = dispatch => {
-    return {
-        setUsers : users =>{
-            dispatch({
-                type: "SET_USERS_LIST",
-                payload: {users}
-            })
-        }
-    }
-}
+const matDispatchToProps = (dispatch) => {
+  return {
+    setUsers: (users) => {
+      dispatch({
+        type: "SET_USERS_LIST",
+        payload: { users },
+      });
+    },
+  };
+};
 
 export default connect(mapStateToProps, matDispatchToProps)(UsersList);

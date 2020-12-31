@@ -26,7 +26,9 @@ function Topbar(props) {
   return (
     <nav className="topbar">
       <div className="flex-row">
-        <h1><Link to="/">GROUPOMANIA</Link></h1>
+        <h1>
+          <Link to="/">GROUPOMANIA</Link>
+        </h1>
       </div>
 
       <div className="menu-bar">
@@ -34,9 +36,9 @@ function Topbar(props) {
           <span>{props.state.user.lastName} </span>
           <img src={props.state.user.avatar} alt="groupomania" />
         </Link>
-          <Link className="button" to="/ajouter">
-            <span className="fa fa-plus"></span>Ajouter un poste
-          </Link>
+        <Link className="button" to="/ajouter">
+          <span className="fa fa-plus"></span>Ajouter un poste
+        </Link>
         <span
           onClick={toggleSideBarre}
           style={{ fontSize: "1.4em" }}

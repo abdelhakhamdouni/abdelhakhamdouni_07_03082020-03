@@ -1,5 +1,5 @@
-const connection = require('./connectDB')
-const config = require('./dbConfig')
+const connection = require("./connectDB");
+const config = require("./dbConfig");
 
 /**
  * Promise
@@ -8,5 +8,4 @@ const config = require('./dbConfig')
  * @param {Parms} params params for query
  */
 
-
-module.exports = connection(config)
+module.exports = connection(config);

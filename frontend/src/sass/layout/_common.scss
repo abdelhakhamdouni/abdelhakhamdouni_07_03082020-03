@@ -20,13 +20,22 @@ body, html{
     color: $orange;
     font-size: 1.5em;
 }
-button{
+button, .button{
     background-color: transparent;
     border: 1px solid $light;
     color: $light;
     border-radius: 5px;
     margin-right: .5em;
+    cursor: pointer;
     &:hover{
         color: $orange;
     }
+}
+
+.warning{
+    background-color: rgb(253, 224, 191);
+    color: rgb(177, 85, 0);
+    padding: 1.5em 2em;
+    margin-bottom: 1em;
+    text-align: center;
 }

@@ -1,6 +1,5 @@
 const config = {
-    
-    url : `http://${window.location.hostname}:8080/api/`
-}
+  url: `http://192.168.1.63:8000/api/`,
+};
 
-export default config
+export default config;

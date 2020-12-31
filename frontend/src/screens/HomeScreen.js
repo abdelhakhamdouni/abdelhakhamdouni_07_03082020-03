@@ -14,7 +14,6 @@ function HomeScreen(props) {
 
   return (
     <section className="home">
-
       {!props.state.posts
         ? null
         : props.state.posts.map((post, i) => {
