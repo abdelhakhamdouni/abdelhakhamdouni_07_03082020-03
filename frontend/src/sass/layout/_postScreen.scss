@@ -46,3 +46,46 @@
 
     }
 }
+
+@media screen and (max-width: 990px){
+    .postScreen{
+        h1{
+            padding-bottom: 1em;
+        }
+        width: 100%;
+        margin: 0;
+        padding: 3em 0;
+        .post{
+            width: 100%;
+            margin: 0 0 1em 0;
+            border-radius: 0;
+            .post_footer{
+                font-size: .8em !important;
+                .date{
+                    color: aqua !important;
+                }
+            }
+        }
+        .comment-list{
+            width: 95%;
+            padding: 0;
+            margin: 0 auto;
+            .comment{
+                width: 95%;
+                &.child{
+                    width: 90% !important;
+                }
+                .comment-body{
+                    .comment-comment{
+                        padding: 0;
+                    }
+                    .comment-footer{
+                        button{
+                            font-size: .7em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

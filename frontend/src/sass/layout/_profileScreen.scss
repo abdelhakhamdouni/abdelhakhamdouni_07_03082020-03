@@ -1,6 +1,5 @@
 .profile{
     height: calc(100vh - 6em);
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,6 +30,21 @@
             padding: .5em 1em;
             font-size: 1.1em;
             text-decoration: none;
+        }
+    }
+}
+
+@media screen and (max-width: 990px){
+    .profile{
+        padding-top: 3em;
+        .profile-header{
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 10em;
+                height: 10em;
+            }
         }
     }
 }

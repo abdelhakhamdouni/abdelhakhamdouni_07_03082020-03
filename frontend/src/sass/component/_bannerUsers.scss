@@ -56,3 +56,20 @@
         }
     }
 }
+
+@media screen and (max-width: 990px){
+    .bannerUsers{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul li a img{
+            width: 35px;
+            height: 35px;
+        }
+    }
+}

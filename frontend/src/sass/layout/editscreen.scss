@@ -125,3 +125,17 @@
         }
     }
 }
+
+@media screen and (max-width: 990px){
+    .profile .profile-action button, .profile .profile-action{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .button, button{
+            margin: 1em 2em;
+            padding: .5em;
+            font-size: .8em;
+        }
+    }
+}
