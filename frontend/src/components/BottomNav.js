@@ -13,6 +13,18 @@ function BottomNav(props) {
   }
 
   useEffect(() => {
+    document.querySelector('#menu').addEventListener('click', ()=>{
+        document.querySelector('.leftasideDesktop').classList.contains('shown')  ?
+        document.querySelector('.leftasideDesktop').classList.remove('shown')  :
+        document.querySelector('.leftasideDesktop').classList.add('shown')  
+    })
+
+    document.querySelector('#lastPosts').addEventListener('click', ()=>{
+      document.querySelector('.bannerPosts').classList.contains('shown')  ?
+      document.querySelector('.bannerPosts').classList.remove('shown')  :
+      document.querySelector('.bannerPosts').classList.add('shown')  
+  })
+
     let path = window.location.pathname;
     if (path.match(/\/post\/\d/)) {
       path = "/";
@@ -32,6 +44,11 @@ function BottomNav(props) {
 
   return (
     <ul className="bottomnav">
+      <li id="menu">
+          <span
+            className="fa fa-bars"
+          ></span>
+      </li>
       <li>
         <Link
           className={
@@ -79,6 +96,11 @@ function BottomNav(props) {
             className="fa fa-user"
           ></span>
         </Link>
+      </li>
+      <li id="lastPosts">
+          <span
+            className="fa fa-file"
+          ></span>
       </li>
     </ul>
   );

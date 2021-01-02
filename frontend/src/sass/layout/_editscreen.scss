@@ -127,6 +127,13 @@
 }
 
 @media screen and (max-width: 990px){
+    .editScreen{
+        justify-content: flex-start;
+        padding-top: 3em;
+        form{
+            width: 100%;
+        }
+    }
     .profile .profile-action button, .profile .profile-action{
         display: flex;
         justify-content: center;

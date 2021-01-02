@@ -1,5 +1,4 @@
-import React from "react";
-import logo from "../assets/images/avatar/avatar.png";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -8,6 +7,20 @@ function LeftAside(props) {
     localStorage.clear();
     window.location.href = "/";
   };
+  useEffect(() => {
+    document.querySelectorAll('.leftasideDesktop ul li').forEach(ele=>{
+      ele.addEventListener('click', ()=>{
+        document.querySelector('.leftasideDesktop').classList.contains('shown')  ?
+        document.querySelector('.leftasideDesktop').classList.remove('shown')  :
+        document.querySelector('.leftasideDesktop').classList.add('shown')  
+      })
+    })
+    return () => {
+      document.querySelectorAll('.leftasideDesktop ul li').forEach(ele=>{
+          ele.removeEventListener('click',null)
+      })
+    }
+  })
 
   return (
     <nav className="leftasideDesktop">

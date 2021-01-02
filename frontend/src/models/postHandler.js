@@ -31,7 +31,7 @@ function getLastsPosts(token = null) {
 
 function getAllPostsWithId(token = null, id) {
   token = !token ? localStorage.getItem("token") : token;
-  return axios.get(config.url + "posts/" + id, {
+  return axios.get(config.url + "posts/user/"+ id +"/posts", {
     headers: { Authorization: "Bearer " + token },
   });
 }

@@ -8,6 +8,7 @@
     width: 20em;
     padding-top: 2em;
     z-index: 999;
+    .overlay{display: none;}
     img{
         width: 100px !important;
         height: 100px !important;
@@ -66,6 +67,34 @@
     }
 
     .leftasideDesktop{
-        display: none;
+        transform: scaleX(1.2);
+        transform-origin: left;
+        animation: shrinkNav .3s linear both;
+        &.shown .overlay{
+            width: 100vw;
+            height: 90vh;
+            left: 0;
+            top: 0;
+            position: absolute;
+            background-color: rgba(34, 34, 34, 0.226);
+            z-index: -1;
+            display: block;
+        }
+        img{
+            padding: 0;
+            margin: 0;
+        }
+        h4{
+            padding-top: 0;
+        }
+        ul{
+            padding: 0 1em;
+        }
+        &.shown{
+            display: flex;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: scaleNav .3s linear both;
+        }
     }
 }

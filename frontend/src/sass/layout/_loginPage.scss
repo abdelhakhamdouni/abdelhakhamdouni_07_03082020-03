@@ -41,6 +41,32 @@
                 font-size: 1.2em;
                 width: 80%;
             }
+           
+            
+        }
+        .form-group{
+            padding: 0;
+            input{
+                width: 75%;
+            }
+            .input-group{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                padding: 0;
+                margin: 0;
+                input{
+                    width: 100%
+                }
+                span{
+                    position: absolute;
+                    left: 100%;
+                    top: 50%;
+                    transform: translate(-30px, -50%);
+                }
+            }
             &.form-check{
                 flex-direction: row;
                 justify-content: center;
@@ -54,8 +80,8 @@
                     width: unset;
                 }
             }
-            
         }
+
         button{
             background-color: $primary;
             padding: .5em 1em;
@@ -83,5 +109,71 @@
               color: $orange;
           }
         }
+    }
+}
+
+@media screen and (max-width: 990px){
+    .logscreen{
+        width: 100%;
+        
+        p.small{
+            margin: 0;
+            padding: 0;
+            width: 80%;
+        }
+        form{
+            width: 90%;
+            .form-group{
+                padding: 0;
+                input{
+                    width: 75%;
+                }
+                .input-group{
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 80%;
+                    padding: 0;
+                    margin: 0;
+                    input{
+                        width: 100%
+                    }
+                    span{
+                        position: absolute;
+                        left: 100%;
+                        top: 50%;
+                        transform: translate(-30px, -50%);
+                    }
+                }
+            }
+        }
+    }
+    .logscreen.register{
+        .logo{
+            padding: 2em 0 1em;
+        }
+        height: unset;
+        div h1{
+            padding: 0;
+            margin: 0;
+            font-size: 1.2em;
+        }
+        form{
+            .form-group{
+                input{
+                    padding: .3em;
+                    font-size: 1em;
+                }
+                label{
+                    font-size: 1em;
+
+                }
+            }
+            button{
+                margin-top: 1em;
+            }
+        }
+        padding-bottom: 3em;
     }
 }

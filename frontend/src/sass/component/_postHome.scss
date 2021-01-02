@@ -65,5 +65,14 @@
         width: 95%;
         padding: 0;
         height: 50vh;
+        .post_footer{
+            span .fa, span .far {
+                font-size: 1.5em !important;
+            }
+            .date{
+                font-size: .8em !important;
+                color: $primary;
+            }
+        }
     }
 }

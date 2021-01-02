@@ -68,13 +68,20 @@ function LogScreen(props) {
         </div>
         <div className="form-group">
           <label htmlFor="password">Mot de passe :</label>
-          <input
-            onChange={changeCredentiels}
-            name="password"
-            type="password"
-            className="form-control"
-            id="password"
-          />
+          <div className="input-group">
+            <input
+              onChange={changeCredentiels}
+              name="password"
+              type={passwordclear? "text" : "password"}
+              className="form-control"
+              id="password"
+              />
+            <span 
+              className={passwordclear ? "fa fa-eye-slash" : "fa fa-eye"} 
+              onClick={()=>setpasswordclear(!passwordclear)}>
+                
+              </span>
+            </div>
         </div>
         <div className="form-group form-check">
           <input

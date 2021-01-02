@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import AddComment from "./AddComment";
-import avatar from "../assets/images/avatar/avatar.png";
 import { connect } from "react-redux";
 import {
   deleteComment,
@@ -14,6 +13,7 @@ function Comment(props) {
   const [commentshow, setcommentshow] = useState(false);
   const [user, setuser] = useState(null);
   const history = useHistory();
+
   function deletecomment() {
     console.log(props.comment.id);
     deleteComment(null, props.comment.id).then((res) => {

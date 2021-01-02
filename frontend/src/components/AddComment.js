@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { addComment, getAllCommentsByPostId } from "../models/commentHandler";
 import { getPostById } from "../models/postHandler";
 
 function AddComment(props) {
-  const history = useHistory();
 
   let comment = {};
   function submitComment(e) {

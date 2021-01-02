@@ -12,6 +12,7 @@ let initialState = {
   loading: true,
   users: [],
   lastposts: [],
+  mesposts: []
 };
 
 const reducers = (state = initialState, action) => {
@@ -29,6 +30,8 @@ const reducers = (state = initialState, action) => {
       return { ...state, lastposts: action.payload.posts };
     case "UPLOAD_POST_FROM_API":
       return { ...state, post: action.payload.post };
+    case "UPLOAD_MES_POSTS_FROM_API":
+      return { ...state, mespost: action.payload.posts };
     case "UPLOAD_COMMENTS_FROM_API":
       return { ...state, comments: action.payload.comments };
     case "SHOW_SIDE_BARRE":

@@ -7,11 +7,23 @@ function BannerPosts(props) {
   const [posts, setposts] = useState(null);
 
   useEffect(() => {
+    document.querySelectorAll('.post_banner').forEach(ele=>{
+      ele.addEventListener('click', ()=>{
+        document.querySelector('.bannerPosts').classList.contains('shown')  ?
+        document.querySelector('.bannerPosts').classList.remove('shown')  :
+        document.querySelector('.bannerPosts').classList.add('shown')  
+      })
+    })
     getLastsPosts().then((posts) => {
       console.log(posts);
       props.setLastsPostsData(posts.data);
       setposts(posts.data);
     });
+    return () => {
+      document.querySelectorAll('.leftasideDesktop ul li').forEach(ele=>{
+          ele.removeEventListener('click',null)
+      })
+    }
   }, [props.state.screen]);
 
   return (
@@ -21,7 +33,7 @@ function BannerPosts(props) {
         {!posts
           ? null
           : posts.map((post, i) => {
-              return <PostBanner key={post.id} post={post} />;
+              return <PostBanner class="post_banner" key={post.id} post={post} />;
             })}
       </section>
     </section>

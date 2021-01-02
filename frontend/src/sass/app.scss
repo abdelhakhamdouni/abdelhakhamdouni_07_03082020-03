@@ -1,4 +1,5 @@
 @import './variables//colors';
+@import './animations/animation';
 @import './layout/common';
 @import './layout/home';
 @import './layout/postScreen';
@@ -15,6 +16,7 @@
 @import './component/addcomment';
 @import './component/bannerPosts';
 @import './component/bannerUsers';
+@import './component/bottomNavbar';
 
 .container {
     display: flex;

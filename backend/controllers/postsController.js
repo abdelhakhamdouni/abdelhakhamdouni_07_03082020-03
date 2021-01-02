@@ -59,17 +59,52 @@ module.exports = {
         res.json({ err });
       });
   },
+  getAllPostsByUserId: async (req, res)=>{
+    const conn = await db;
+    query(conn, querysStrings.getAllPostsWithUserId, [req.params.id])
+      .then(function (posts) {
+        console.log(posts)
+        posts.forEach((post) => {
+          post.image = req.protocol + "://" + req.get("host") + post.image;
+          post.avatar = req.protocol + "://" + req.get("host") + post.avatar;
+          query(conn, querysStrings.getAllLikesByPostId, [post.id]).then(
+            (like) => {
+              post.likeList = like;
+              if (posts.indexOf(post) === posts.length - 1) {
+                res.status(200).json(posts);
+              }
+            }
+          );
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err });
+      });
+  },
 
   getAllPostsWithUserId: async (req, res)=>{
     const conn = await db;
-    let userId = req.params.id
-    query(conn, querysStrings.getCountAllPostsByUserId, [userId] )
-    .then((count)=>{
-      res.status(200).json(count)
-    })
-    .catch(err=>{
-      res.status(500).json(err)
-    })
+    query(conn, querysStrings.getAllCommentsByUserId, [req.params.id])
+      .then(function (posts) {
+        console.log(posts)
+        posts.forEach((post) => {
+          post.image = req.protocol + "://" + req.get("host") + post.image;
+          post.avatar = req.protocol + "://" + req.get("host") + post.avatar;
+          query(conn, querysStrings.getAllLikesByPostId, [post.id]).then(
+            (like) => {
+              post.likeList = like;
+              if (posts.indexOf(post) === posts.length - 1) {
+                res.status(200).json(posts);
+              }
+            }
+          );
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ err });
+      });
   },
 
   //get lasts 10 posts

@@ -12,11 +12,11 @@ module.exports = {
     
     //strings for post querys
     createPost: "INSERT INTO posts(title, image, description, type, UserId, createdAt,userPseudo) VALUE(?,?,?,?,?,now(),?)",
-    getPosts : `SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes,posts.comments,posts.UserId, users.avatar FROM posts,users WHERE posts.UserId = users.id ORDER BY updatedAt DESC`,
+    getPosts : `SELECT posts.*, users.avatar FROM posts,users WHERE posts.UserId = users.id ORDER BY updatedAt DESC`,
     getLastsPostsByUserId : "SELECT id, image FROM posts ORDER BY createdAt DESC LIMIT 5",
-    getAllPostsByUserId: "SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes,posts.UserId, users.avatar FROM posts, users WHERE posts.UserId = users.id AND posts.UserId = ?",
-    getCountAllPostsByUserId : "SELECT COUNT(*) AS count FROM posts WHERE UserId = ?",
-    getPostById : "SELECT posts.id,posts.image,posts.userPseudo,posts.title,posts.description,posts.likes,posts.comments,posts.UserId, users.avatar FROM posts, users WHERE posts.UserId = users.id AND posts.id = ?",
+    getAllPostsWithUserId: "SELECT posts.*, users.avatar FROM posts, users WHERE posts.UserId = users.id AND users.id = ?",
+    getCountAllPostsByUserId : "SELECT posts.*, users.avatar FROM posts, users WHERE posts.UserId = users.id AND users.id = ?",
+    getPostById : "SELECT posts.*, users.avatar FROM posts, users WHERE posts.UserId = users.id AND posts.id = ?",
     getPostByIdForLocal : "SELECT * from posts WHERE  posts.id = ?",
     updatePostLikes: "UPDATE posts SET likes = ?,updatedAt = now() WHERE id = ?",
     updatePostComments : "UPDATE posts SET comments = ?,updatedAt = now() WHERE id = ?",

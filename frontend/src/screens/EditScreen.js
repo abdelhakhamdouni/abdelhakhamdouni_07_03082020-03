@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { editUser } from "../models/userHandler";
-import { deleteUser } from "../models/userHandler";
 
 function ProfileScreen(props) {
   const [image, setimage] = useState(props.state.user.avatar);

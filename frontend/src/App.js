@@ -4,7 +4,6 @@ import LogScreen from "./screens/LogScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import HomeScreen from "./screens/HomeScreen";
 import AddPost from "./screens/AddPost";
-import LeftAside from "./components/LeftAside";
 import { getAllUsers, logWithToken } from "./models/userHandler";
 import ProfileScreen from "./screens/ProfileScreen";
 import PostScreen from "./screens/PostScreen";
@@ -101,6 +100,7 @@ function App(props) {
           </Switch>
         </main>
         <BannerPosts />
+        <BottomNav />
       </Router>
     </div>
   );

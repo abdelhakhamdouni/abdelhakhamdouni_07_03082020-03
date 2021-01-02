@@ -12,6 +12,8 @@ function RegisterScreen(props) {
   const [disabled, setdisabled] = useState(true);
   const [error, seterror] = useState(null);
   const history = useHistory();
+  const [passwordclear, setpasswordclear] = useState(false);
+
 
   function getImage(evt) {
     var tgt = evt.target,
@@ -135,15 +137,21 @@ function RegisterScreen(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            name="password"
-            onChange={saveData}
-            className="form-control"
-            id="password"
-            required
-          />
+          <label htmlFor="password">Mot de passe :</label>
+          <div className="input-group">
+            <input
+              onChange={saveData}
+              name="password"
+              type={passwordclear? "text" : "password"}
+              className="form-control"
+              id="password"
+              />
+            <span 
+              className={passwordclear ? "fa fa-eye-slash" : "fa fa-eye"} 
+              onClick={()=>setpasswordclear(!passwordclear)}>
+                
+              </span>
+            </div>
         </div>
         <div className="form-group mt-3">
           <label htmlFor="file">Choisir un Avatar</label>
