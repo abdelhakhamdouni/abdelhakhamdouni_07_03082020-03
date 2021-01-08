@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(133, 133, 133);
-    top: 5em;
+    top: 3em;
     left: 50%;
     transform: translateX(-50%);
     z-index: 888;
@@ -63,6 +63,7 @@
         margin: 0;
         padding: 0;
         background-color: #fff;
+        top: unset;
         ul {
             padding: 0;
             margin: 0;

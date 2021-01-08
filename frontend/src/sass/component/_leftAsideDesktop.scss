@@ -2,7 +2,7 @@
     background-color: #03101d;
     display: flex;
     flex-direction: column;
-    height: calc( 100vh - 3em);
+    height: calc( 100vh - 2em);
     position: fixed;
     left: 0;
     width: 20em;
@@ -31,7 +31,7 @@
     }
     ul li {
         list-style: none;
-        margin-top: 1em;
+        margin-top: 1.5em;
         transition: all .3s linear;
         &:hover{
             transform: translateX(10px);
@@ -39,7 +39,8 @@
         a{
             text-decoration: none;
             color: $light;
-            font-size: 1.1em;
+            font-size: 1em;
+            font-size: 300 !important;
             .fa{
                 margin-right: 1em;
                 font-size: 1.2em;

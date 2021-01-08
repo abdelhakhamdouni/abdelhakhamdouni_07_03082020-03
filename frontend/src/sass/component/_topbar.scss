@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 4em;
+    height: 2.5em;
     padding: .5em 2em;
     color: lightgray;
     box-shadow: 0 0 5px lightgray;
@@ -13,6 +13,7 @@
     left: 0;
     right: 0;
     background-color: #03101d;
+    z-index: 9999;
     .flex-row{
         margin: auto;
         width: 100%;
@@ -21,6 +22,8 @@
         align-items: center;
         h1{
             font-size: 1.5em;
+            padding: 0;
+            margin: 0;
         }
         h1 a{
             align-self: center;
@@ -96,6 +99,10 @@
 @media screen and (max-width: 990px){
     .topbar .menu-bar {
         display: none;
+    }
+    .topbar .flex-row h1{
+        font-size: 1em !important;
+        font-weight: 700;
     }
     
 }

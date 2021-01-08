@@ -47,7 +47,6 @@ function LeftAside(props) {
             <span>Mes postes</span>
           </Link>
         </li>
-        <hr />
         <li>
           <Link to="/profile">
             <span className="fa fa-user"></span>

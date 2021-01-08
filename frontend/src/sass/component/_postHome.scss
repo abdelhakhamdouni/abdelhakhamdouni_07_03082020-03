@@ -9,11 +9,21 @@
     justify-content: space-between;
     border-radius: 5px;
     position: relative;
+    margin-top: 1em;
     .post_header{
         display: flex;
         justify-content: space-between;
         padding: .5em 1em;
         align-items: center;
+        .post_footer-author{
+            font-size: 1em;
+            color: #fefefe;
+            img{
+                height: 35px;
+                width: 35px;
+                border-radius: 50%;
+            }
+        }
     }
     .post_image{
         flex-grow: 1;
@@ -61,10 +71,27 @@
 }
 
 @media screen and (max-width : 990px){
+    .postScreen{
+        padding-top: 1em;
+        h1{
+            font-size: 1.2em;
+        }
+    }
     .post{
         width: 95%;
         padding: 0;
         height: 50vh;
+        .post_header{
+            padding: 0 .5em;
+            h2{
+                margin: 5px;
+            }
+        }
+        .post_image{
+            img{
+                transform: scale(.9);
+            }
+        }
         .post_footer{
             span .fa, span .far {
                 font-size: 1.5em !important;
